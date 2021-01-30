@@ -35,26 +35,16 @@ for (let i = 0; i < times.length; i++) {
     var button = $("<button>").addClass("saveBtn col-1");
     container.append(row);
     row.append(timeBlock, textArea, button);
-    for (let j = 0; j < 8; j++) {
-        $("<textArea>").addClass([j]);
-        
+          
     }
-}
+    $(".saveBtn").on("click", function(){
+            var textContent = $(this).prev().val();
+            var timeEl = $(this).prev().prev().text;
+    })
 
- $(".saveBtn").on("click", function(){
-    var textContent = $(this).prev().val();
-    var timeEl = $(this).prev().prev().text;
-    localStorage.setItem("plannerText", textContent);
-    localStorage.setItem("timeText", timeEl);
- });
-
-JSON.parse(window.localStorage.getItem("timeText"));
-JSON.parse(window.localStorage.getItem("plannerText")); 
-$("")
-
-for (var j = 0; j < times.length; j++) {
-    console.log(times[j], localStorage.getItem(times[j]));
-    var timesEl = document.getElementById(times[j]); // grabing text area by id 
-    var timesLocal = localStorage.getItem(times[j]); // getting local storage using id 
-    timesEl.textContent = timesLocal;
-}
+    for (var j = 0; j < times.length; j++) {
+        console.log(times[j], localStorage.getItem(times[j]));
+        var timesEl = document.getElementById(times[j]); // grabing text area by id 
+        var timesLocal = localStorage.getItem(times[j]); // getting local storage using id 
+        timesEl.textContent = timesLocal;
+    }
