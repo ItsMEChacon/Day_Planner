@@ -37,14 +37,23 @@ for (let i = 0; i < times.length; i++) {
     row.append(timeBlock, textArea, button);
           
     }
-    $(".saveBtn").on("click", function(){
-            var textContent = $(this).prev().val();
-            var timeEl = $(this).prev().prev().text;
-    })
-
-    for (var j = 0; j < times.length; j++) {
-        console.log(times[j], localStorage.getItem(times[j]));
+$(".saveBtn").on("click", function(){
+        var timeEl = $(this).prev().prev().text();
+        var textContent = $(this).prev().val();
+        for (let t = 0; t < times.length; t++) {
+                localStorage.setItem(, textContent);
+                localStorage.setItem(, timeEl);
+                
+                
+        }
+        
+        
+    });
+    for (let j = 0; j < times.length; j++) {
         var timesEl = document.getElementById(times[j]); // grabing text area by id 
-        var timesLocal = localStorage.getItem(times[j]); // getting local storage using id 
-        timesEl.textContent = timesLocal;
-    }
+        var timesLocal = localStorage.getItem(times[j]); // getting local storage using id
+        $("col-10").append(times[j])
+         };
+
+
+    
