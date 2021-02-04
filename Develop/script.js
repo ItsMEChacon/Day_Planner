@@ -19,19 +19,20 @@
 // return old blocks saved(refresh storage)
 // lock button function
 
+
 var todaysDate = moment().format("MMMM DD YYYY");
 $("#currentDay").text(todaysDate)
 
 
 
 var container = $(".container");
-
 var times = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"];
+var plannerItems = []
 
 for (let i = 0; i < times.length; i++) {
     var row = $("<div>").addClass("row");
     var timeBlock = $("<div>").addClass("time-block col-1").text(times[i]);
-    var textArea = $("<textarea>").addClass("col-10");
+    var textArea = $("<textarea>").addClass("col-10").addClass(times[i]);
     var button = $("<button>").addClass("saveBtn col-1");
     container.append(row);
     row.append(timeBlock, textArea, button);
@@ -40,20 +41,28 @@ for (let i = 0; i < times.length; i++) {
 $(".saveBtn").on("click", function(){
         var timeEl = $(this).prev().prev().text();
         var textContent = $(this).prev().val();
-        for (let t = 0; t < times.length; t++) {
-                localStorage.setItem(, textContent);
-                localStorage.setItem(, timeEl);
-                
-                
+        localStorage.setItem(timeEl, textContent);
+        });
+
+function plannerItemsPush(){
+        for (let j = 0; j < times.length; j++) {
+               
+        plannerItems.push(
+            localStorage.getItem(times[j])
+        )
+        console.log(plannerItems)
         }
-        
-        
-    });
-    for (let j = 0; j < times.length; j++) {
-        var timesEl = document.getElementById(times[j]); // grabing text area by id 
-        var timesLocal = localStorage.getItem(times[j]); // getting local storage using id
-        $("col-10").append(times[j])
-         };
+    }
 
 
-    
+
+function oldPLannerItems(){
+    for (let k = 0; k < times.length; k++) {
+       $(times[k]).text(plannerItems[k]);
+       
+    }
+}
+
+
+plannerItemsPush();
+oldPLannerItems();
