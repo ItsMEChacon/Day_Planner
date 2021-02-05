@@ -51,18 +51,12 @@ function plannerItemsPush(){
             localStorage.getItem(times[j])
         )
         console.log(plannerItems)
+        $(times[j]).text(plannerItems[j]);
         }
     }
 
 
-
-function oldPLannerItems(){
-    for (let k = 0; k < times.length; k++) {
-       $(times[k]).text(plannerItems[k]);
-       
-    }
-}
+    
 
 
 plannerItemsPush();
-oldPLannerItems();
